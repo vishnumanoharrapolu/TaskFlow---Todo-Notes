@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@layer base {
+  .prose {
+    @apply max-w-none;
+  }
+  .prose p {
+    @apply mb-2 last:mb-0;
+  }
+  .prose ul {
+    @apply list-disc pl-4 mb-2;
+  }
+  .prose ol {
+    @apply list-decimal pl-4 mb-2;
+  }
+  .prose h1, .prose h2, .prose h3 {
+    @apply font-bold mb-2;
+  }
+}

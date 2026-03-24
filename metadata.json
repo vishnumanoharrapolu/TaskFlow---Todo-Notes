@@ -1,0 +1,5 @@
+{
+  "name": "TaskFlow - Todo & Notes",
+  "description": "A production-ready productivity application inspired by Google Keep and Notion, featuring real-time sync, rich text editing, and smart task management.",
+  "requestFramePermissions": []
+}

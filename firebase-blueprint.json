@@ -1,0 +1,58 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Stores user profile information",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Unique user ID" },
+        "email": { "type": "string", "format": "email", "description": "User email address" },
+        "displayName": { "type": "string", "description": "User display name" },
+        "photoURL": { "type": "string", "format": "uri", "description": "User profile photo URL" },
+        "createdAt": { "type": "integer", "description": "Timestamp of creation" }
+      },
+      "required": ["uid", "email", "createdAt"]
+    },
+    "Task": {
+      "title": "Task",
+      "description": "Stores task and note information",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Owner's user ID" },
+        "title": { "type": "string", "description": "Task title" },
+        "description": { "type": "string", "description": "Task description or note content" },
+        "completed": { "type": "boolean", "description": "Completion status" },
+        "priority": { "type": "string", "enum": ["low", "medium", "high"], "description": "Task priority" },
+        "dueDate": { "type": "string", "format": "date", "description": "Optional due date" },
+        "tags": { "type": "array", "items": { "type": "string" }, "description": "List of tags" },
+        "color": { "type": "string", "description": "Hex color code for the task" },
+        "pinned": { "type": "boolean", "description": "Whether the task is pinned" },
+        "createdAt": { "type": "integer", "description": "Timestamp of creation" },
+        "updatedAt": { "type": "integer", "description": "Timestamp of last update" },
+        "category": { "type": "string", "description": "Task category" },
+        "subtasks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "title": { "type": "string" },
+              "completed": { "type": "boolean" }
+            }
+          }
+        }
+      },
+      "required": ["userId", "title", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile documents"
+    },
+    "/tasks/{taskId}": {
+      "schema": "Task",
+      "description": "Task and note documents"
+    }
+  }
+}
